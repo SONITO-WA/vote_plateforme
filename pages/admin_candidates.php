@@ -144,7 +144,7 @@ include __DIR__ . '/../includes/navbar.php';
 
         <div class="field">
           <label for="name">Nom complet du candidat</label>
-          <input id="name" name="name" type="text" required maxlength="100" placeholder="ex. Sara Benali">
+          <input id="name" name="name" type="text" required maxlength="100" placeholder="ex. Hajar Errahmouni">
         </div>
 
         <div class="field">
