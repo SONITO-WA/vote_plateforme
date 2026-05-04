@@ -186,6 +186,3 @@ L'inscription d'autres étudiants est possible via la page
   - Mozilla Firefox 121+
   - Microsoft Edge 120+
   - Responsive : desktop / tablette / mobile (≥ 360 px)
-
-
-================================================================
