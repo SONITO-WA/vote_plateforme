@@ -101,8 +101,8 @@ include __DIR__ . '/../includes/header.php';
             <div class="chart-canvas-wrap">
                 <canvas
                     data-chart="bar"
-                    data-labels='<?= json_encode($chartLabels) ?>'
-                    data-values='<?= json_encode($chartValues) ?>'>
+                    data-labels='<?= htmlspecialchars(json_encode($chartLabels), ENT_QUOTES) ?>'
+                    data-values='<?= htmlspecialchars(json_encode($chartValues), ENT_QUOTES) ?>'>
                 </canvas>
             </div>
         </div>
