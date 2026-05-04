@@ -43,25 +43,22 @@ et l'affichage transparent des résultats en temps réel.
         http://localhost/VotePlateforme_MGSI/
 
 
-4. COMPTES PAR DÉFAUT
----------------------
-  ┌────────────────────────────────────────────────────────────┐
-  │ ADMINISTRATEUR (compte exigé par le cahier des charges)    │
-  │   Login    : ENSIASD                                       │
-  │   Password : ENSIASD2026                                   │
-  │   Rôle     : admin                                         │
-  └────────────────────────────────────────────────────────────┘
+4. Comptes par défaut
+-----------------------
+### 👤 Administrateur
+- Login    : ENSIASD
+- Password : ENSIASD2026
+- Rôle     : admin
 
-  ┌────────────────────────────────────────────────────────────┐
-  │ ÉTUDIANTS (mot de passe commun pour les tests)             │
-  │   Password : student123                                    │
-  │                                                            │
-  │   - oualid.mokrane@ensiasd.ma     (Oualid Mokrane)         │
-  │   - hajar.errahmouni@ensiasd.ma   (Hajar Errahmouni)       │
-  └────────────────────────────────────────────────────────────┘
+### 🎓 Étudiants (mot de passe commun)
+- Password : student123
 
-L'inscription d'autres étudiants est possible via la page
-"S'inscrire" ; le mot de passe choisi est alors hashé via bcrypt.
+Utilisateurs :
+- oualid.mokrane@ensiasd.ma (Oualid Mokrane)
+- hajar.errahmouni@ensiasd.ma (Hajar Errahmouni)
+
+⚠️ Les nouveaux étudiants peuvent s'inscrire via la page "S'inscrire".
+Le mot de passe est sécurisé avec bcrypt.
 
 
 5. STRUCTURE DU PROJET
