@@ -1,10 +1,9 @@
-================================================================
+===============================================
   VoxENSIASD — Plateforme de Vote Électronique
   Mini-Projet Développement Web — Filière MGSI
   Étudiants : Oualid Mokrane & Hajar Errahmouni
   ENSIASD Taroudant
-================================================================
-
+===============================================
 
 1. PRÉSENTATION
 ---------------
