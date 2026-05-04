@@ -45,19 +45,19 @@ et l'affichage transparent des résultats en temps réel.
 
 4. Comptes par défaut
 -----------------------
-### 👤 Administrateur
+### Administrateur
 - Login    : ENSIASD
 - Password : ENSIASD2026
 - Rôle     : admin
 
-### 🎓 Étudiants (mot de passe commun)
+### Étudiants (mot de passe commun)
 - Password : student123
 
 Utilisateurs :
 - oualid.mokrane@ensiasd.ma (Oualid Mokrane)
 - hajar.errahmouni@ensiasd.ma (Hajar Errahmouni)
 
-⚠️ Les nouveaux étudiants peuvent s'inscrire via la page "S'inscrire".
+Les nouveaux étudiants peuvent s'inscrire via la page "S'inscrire".
 Le mot de passe est sécurisé avec bcrypt.
 
 
