@@ -19,10 +19,10 @@ define('APP_TAGLINE', 'Plateforme de Vote Électronique');
 define('BASE_URL', '');
 
 // === Paramètres BDD ===
-define('DB_HOST', 'sql7.freesqldatabase.com');
-define('DB_NAME', 'sql7825408');
-define('DB_USER', 'sql7825408');     // utilisateur XAMPP par défaut
-define('DB_PASS', 'Vx8pjQl97d');         // mot de passe XAMPP par défaut (vide)
+define('DB_HOST', getenv('DB_HOST'));
+define('DB_NAME', getenv('DB_NAME'));
+define('DB_USER', getenv('DB_USER'));
+define('DB_PASS', getenv('DB_PASS'));        // mot de passe XAMPP par défaut (vide)
 define('DB_CHARSET', 'utf8mb4');
 
 // === Connexion PDO ===
