@@ -16,13 +16,13 @@ if (session_status() === PHP_SESSION_NONE) {
 // === Constantes globales ===
 define('APP_NAME', 'VoxENSIASD');
 define('APP_TAGLINE', 'Plateforme de Vote Électronique');
-define('BASE_URL', '/VotePlateforme_MGSI');
+define('BASE_URL', '');
 
 // === Paramètres BDD ===
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'vote_plateforme');
-define('DB_USER', 'root');     // utilisateur XAMPP par défaut
-define('DB_PASS', '');         // mot de passe XAMPP par défaut (vide)
+define('DB_HOST', 'sql7.freesqldatabase.com');
+define('DB_NAME', 'sql7825408');
+define('DB_USER', 'sql7825408');     // utilisateur XAMPP par défaut
+define('DB_PASS', 'Vx8pjQl97d');         // mot de passe XAMPP par défaut (vide)
 define('DB_CHARSET', 'utf8mb4');
 
 // === Connexion PDO ===
