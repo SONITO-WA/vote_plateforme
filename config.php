@@ -8,7 +8,23 @@
  * Oualid Mokrane & Hajar Errahmouni — MGSI
  */
 
-// === Démarrer la session si pas déjà fait ===
+// === Configuration session (IMPORTANT pour Fly + HTTPS) ===
+$secure = (
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https')
+);
+
+session_set_cookie_params([
+    'lifetime' => 86400,
+    'path' => '/',
+    'domain' => '',
+    'secure' => $secure,
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+
+ini_set('session.gc_maxlifetime', 86400);
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
