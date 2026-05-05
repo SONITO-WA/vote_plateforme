@@ -4,7 +4,6 @@
  * ----------
  * Configuration globale + connexion PDO sécurisée à la base de données.
  * Inclure ce fichier en tête de chaque page PHP via require_once.
- *
  * Oualid Mokrane & Hajar Errahmouni — MGSI
  */
 
