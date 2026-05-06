@@ -29,8 +29,6 @@ avec des fonctionnalités adaptées à chaque rôle.
 
 ## 🔗 Site Web
 
-Ajouter ici le lien du site hébergé :
-
 ```txt
 https://vote-plateforme.ct.ws/
 ```
