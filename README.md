@@ -198,28 +198,22 @@ VotePlateforme_MGSI/
 │   ├── navbar.php
 │   └── footer.php
 │
-├── pages/
-│   ├── login.php
-│   ├── register.php
-│   ├── logout.php
-│   ├── dashboard.php
-│   ├── elections.php
-│   ├── vote.php
-│   ├── results.php
-│   ├── profile.php
-│   ├── admin_elections.php
-│   ├── admin_candidates.php
-│   ├── admin_results.php
-│   ├── admin_archive.php
-│   └── api_results.php
-│
-└── doc/
-    ├── Fiche.pdf
-    ├── README.txt
-    ├── plateforme_rapport.pdf
-    ├── plateforme_rapport.docx
-    ├── captures/
-    └── diagrammes/
+└── pages/
+    ├── login.php
+    ├── register.php
+    ├── logout.php
+    ├── dashboard.php
+    ├── elections.php
+    ├── vote.php
+    ├── results.php
+    ├── profile.php
+    ├── admin_elections.php
+    ├── admin_candidates.php
+    ├── admin_results.php
+    ├── admin_archive.php
+    └── api_results.php
+
+
 ```
 
 ---
