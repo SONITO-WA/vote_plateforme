@@ -1,185 +1,392 @@
-  VoxENSIASD — Plateforme de Vote Électronique
-  Mini-Projet Développement Web — Filière MGSI
-  Étudiants : Oualid Mokrane & Hajar Errahmouni
-  ENSIASD Taroudant
-===============================================
+# 🗳️ VoxENSIASD — Plateforme de Vote Électronique
 
-1. PRÉSENTATION
----------------
-VoxENSIASD est une plateforme web sécurisée d'organisation de
-scrutins étudiants (élection de délégués, membres d'associations…).
-Elle garantit l'unicité du vote, la confidentialité des bulletins
-et l'affichage transparent des résultats en temps réel.
+> Mini-Projet Développement Web — Filière MGSI  
+> Réalisé par **Oualid Mokrane** & **Hajar Errahmouni**  
 
+---
 
-2. PRÉ-REQUIS
--------------
-- XAMPP (ou WAMP / MAMP / LAMP)        — serveur local
-- Apache 2.4+                          — serveur web
-- PHP 7.4 minimum (recommandé : 8.0+)  — interpréteur
-- MySQL 5.7+ ou MariaDB 10.4+          — base de données
-- Navigateur récent (Chrome, Firefox, Edge, Safari)
+# 📌 Présentation du Projet
 
+**VoxENSIASD** est une plateforme web sécurisée dédiée à l’organisation et à la gestion des scrutins étudiants (élections de délégués, représentants d’associations, clubs, etc.).
 
-3. INSTALLATION (XAMPP — pas à pas)
-------------------------------------
-  Étape 1 — Copier le projet
-    Copier le dossier VotePlateforme_MGSI/ entier dans :
-        C:\xampp\htdocs\
-    (sous Linux : /opt/lampp/htdocs/  ou  /var/www/html/)
+L’application garantit :
 
-  Étape 2 — Démarrer Apache + MySQL
-    Ouvrir le panneau XAMPP.
-    Cliquer sur "Start" pour Apache et MySQL.
+- ✅ L’unicité du vote
+- ✅ La confidentialité des bulletins
+- ✅ La transparence des résultats
+- ✅ Un suivi en temps réel des statistiques électorales
 
-  Étape 3 — Importer la base de données
-    Ouvrir : http://localhost/phpmyadmin
-    Onglet "Importer" → choisir le fichier projet.sql
-    (situé à la racine du projet) → "Exécuter".
-    Une base "vote_plateforme" est créée avec ses tables et
-    quelques données de test.
+Le système propose deux espaces distincts :
 
-  Étape 4 — Accéder à l'application
-        http://localhost/VotePlateforme_MGSI/
+- 👨‍🎓 Espace Étudiant
+- 👨‍💼 Espace Administrateur
 
+avec des fonctionnalités adaptées à chaque rôle.
 
-4. Comptes par défaut
------------------------
-### Administrateur
-- Login    : ENSIASD
-- Password : ENSIASD2026
-- Rôle     : admin
+---
 
-### Étudiants (mot de passe commun)
-- Password : student123
+# 🌐 Hébergement & Démo
 
-Utilisateurs :
-- oualid.mokrane@ensiasd.ma (Oualid Mokrane)
-- hajar.errahmouni@ensiasd.ma (Hajar Errahmouni)
+## 🔗 Site Web
 
-Les nouveaux étudiants peuvent s'inscrire via la page "S'inscrire".
-Le mot de passe est sécurisé avec bcrypt.
+Ajouter ici le lien du site hébergé :
 
+```txt
+https://vote-plateforme.ct.ws/
+```
 
-5. STRUCTURE DU PROJET
------------------------
-  VotePlateforme_MGSI/
-  │
-  ├── index.php                  Landing page publique
-  ├── config.php                 Connexion PDO + helpers globaux
-  ├── projet.sql                 Schéma + données de test
-  │
-  ├── css/
-  │   ├── style.css              Styles landing + auth
-  │   └── dashboard.css          Styles tableau de bord
-  │
-  ├── js/
-  │   ├── landing.js             Animations + validation front
-  │   └── dashboard.js           Chart.js + AJAX polling
-  │
-  ├── images/                    (logos, illustrations)
-  │
-  ├── includes/
-  │   ├── header.php             <head>, polices, CSS
-  │   ├── navbar.php             Sidebar avec liens par rôle
-  │   └── footer.php             Scripts (Bootstrap, Chart.js)
-  │
-  ├── pages/
-  │   ├── login.php              Connexion (email OU "ENSIASD")
-  │   ├── register.php           Inscription étudiant
-  │   ├── logout.php             Déconnexion
-  │   ├── dashboard.php          Tableau de bord (admin/étudiant)
-  │   ├── elections.php          Liste des scrutins (étudiant)
-  │   ├── vote.php               Bulletin de vote
-  │   ├── results.php            Résultats (étudiant)
-  │   ├── profile.php            Profil + changement mot de passe
-  │   ├── admin_elections.php    CRUD des élections
-  │   ├── admin_candidates.php   CRUD des candidats
-  │   ├── admin_results.php      Résultats temps réel (admin)
-  │   ├── admin_archive.php      Archives des scrutins
-  │   └──api_results.php         Endpoint JSON (AJAX polling)
-  │    
-  │
-  └── doc/
-      ├── Fiche.pdf                                   Fiche de validation remplie
-      ├── README.txt                              Ce fichier
-      ├── plateforme_rapport.pdf          Rapport 
-      ├── plateforme_rapport.docx
-      ├── captures/              Captures d'écran (PNG)
-      └── diagrammes/            MCD + MLD (Looping)
+---
 
+### Configuration recommandée
 
-6. SCHÉMA DE LA BASE DE DONNÉES
---------------------------------
-  Table users
-    id        INT, PK, AUTO_INCREMENT
-    name      VARCHAR(100)
-    email     VARCHAR(150) UNIQUE
-    password  VARCHAR(255)        — hash bcrypt
-    role      ENUM('admin','student')
-    created_at DATETIME
+| Technologie | Version recommandée |
+|---|---|
+| PHP | 8.0+ |
+| MySQL / MariaDB | 5.7+ / 10.4+ |
+| Apache | 2.4+ |
 
-  Table elections
-    id          INT, PK
-    title       VARCHAR(150)
-    description TEXT
-    status      ENUM('open','closed','archived')
-    created_at  DATETIME
-    closed_at   DATETIME NULL
+---
 
-  Table candidates
-    id          INT, PK
-    name        VARCHAR(100)
-    program     TEXT
-    election_id INT, FK → elections(id) ON DELETE CASCADE
+# ⚙️ Pré-requis
 
-  Table votes
-    id           INT, PK
-    user_id      INT, FK → users(id)
-    candidate_id INT, FK → candidates(id)
-    election_id  INT, FK → elections(id)
-    voted_at     DATETIME
-    UNIQUE(user_id, election_id)   
+Avant l’installation, assurez-vous d’avoir :
 
+- XAMPP / WAMP / MAMP / LAMP
+- Apache 2.4+
+- PHP 7.4 minimum (8.0+ recommandé)
+- MySQL 5.7+ ou MariaDB 10.4+
+- Un navigateur moderne :
+  - Google Chrome
+  - Mozilla Firefox
+  - Microsoft Edge
+  - Safari
 
-7. SÉCURITÉ
------------
-- Mots de passe hashés via password_hash() / PASSWORD_BCRYPT
-- 100 % des requêtes SQL utilisent PDO + paramètres préparés
-- Tokens CSRF sur tous les formulaires sensibles
-- session_regenerate_id() à la connexion
-- Contrainte UNIQUE(user_id, election_id) en base : double
-  protection (PHP + SGBD) contre le double vote
-- Échappement HTML systématique via la fonction e()
-- Validation des entrées côté serveur ET côté client
+---
 
+# 🚀 Installation du Projet (XAMPP)
 
-8. FONCTIONNALITÉS
-------------------
-  Étudiant :
-    • Voir les scrutins ouverts
-    • Voter une seule fois par scrutin
-    • Consulter les résultats après avoir voté
-    • Modifier son mot de passe
+## Étape 1 — Copier le projet
 
-  Administrateur :
-    • Créer / clôturer / archiver / supprimer un scrutin
-    • Gérer les candidats (ajout, modification, suppression)
-    • Suivre les résultats en temps réel (AJAX 5 s + Chart.js)
-    • Consulter les archives des scrutins passés
-    • Statistiques globales (utilisateurs, votes, participation)
+Copier le dossier :
 
+```txt
+VotePlateforme_MGSI/
+```
 
-9. TECHNOLOGIES
----------------
-  Frontend : HTML5, CSS3, Bootstrap 5.3, JavaScript ES6, Chart.js 4
-  Backend  : PHP 7.4+ (PDO MySQL)
-  Base     : MySQL / MariaDB (UTF-8 mb4)
+dans :
 
+```txt
+C:\xampp\htdocs\
+```
 
-10. NAVIGATEURS TESTÉS
------------------------
-  - Google Chrome 120+
-  - Mozilla Firefox 121+
-  - Microsoft Edge 120+
-  - Responsive : desktop / tablette / mobile (≥ 360 px)
+Sous Linux :
+
+```txt
+/opt/lampp/htdocs/
+```
+
+ou
+
+```txt
+/var/www/html/
+```
+
+---
+
+## Étape 2 — Démarrer Apache & MySQL
+
+Depuis le panneau XAMPP :
+
+- Cliquer sur **Start** pour Apache
+- Cliquer sur **Start** pour MySQL
+
+---
+
+## Étape 3 — Importer la Base de Données
+
+Ouvrir :
+
+```txt
+http://localhost/phpmyadmin
+```
+
+Puis :
+
+1. Aller dans l’onglet **Importer**
+2. Sélectionner le fichier :
+
+```txt
+projet.sql
+```
+
+3. Cliquer sur **Exécuter**
+
+La base de données `vote_plateforme` sera automatiquement créée avec :
+
+- les tables
+- les relations
+- des données de test
+
+---
+
+## Étape 4 — Lancer l’application
+
+Accéder au projet via :
+
+```txt
+http://localhost/VotePlateforme_MGSI/
+```
+
+---
+
+# 👤 Comptes de Test
+
+## 👨‍💼 Administrateur
+
+| Champ | Valeur |
+|---|---|
+| Login | ENSIASD |
+| Mot de passe | ENSIASD2026 |
+| Rôle | admin |
+
+---
+
+## 👨‍🎓 Étudiants
+
+### Mot de passe commun
+
+```txt
+student123
+```
+
+### Comptes disponibles
+
+- oualid.mokrane@ensiasd.ma
+- hajar.errahmouni@ensiasd.ma
+
+Les nouveaux utilisateurs peuvent également créer un compte via la page :
+
+```txt
+S'inscrire
+```
+
+Les mots de passe sont sécurisés avec **bcrypt**.
+
+---
+
+# 📂 Structure du Projet
+
+```txt
+VotePlateforme_MGSI/
+│
+├── index.php
+├── config.php
+├── projet.sql
+│
+├── css/
+│   ├── style.css
+│   └── dashboard.css
+│
+├── js/
+│   ├── landing.js
+│   └── dashboard.js
+│
+├── images/
+│
+├── includes/
+│   ├── header.php
+│   ├── navbar.php
+│   └── footer.php
+│
+├── pages/
+│   ├── login.php
+│   ├── register.php
+│   ├── logout.php
+│   ├── dashboard.php
+│   ├── elections.php
+│   ├── vote.php
+│   ├── results.php
+│   ├── profile.php
+│   ├── admin_elections.php
+│   ├── admin_candidates.php
+│   ├── admin_results.php
+│   ├── admin_archive.php
+│   └── api_results.php
+│
+└── doc/
+    ├── Fiche.pdf
+    ├── README.txt
+    ├── plateforme_rapport.pdf
+    ├── plateforme_rapport.docx
+    ├── captures/
+    └── diagrammes/
+```
+
+---
+
+# 🗄️ Schéma de la Base de Données
+
+## Table `users`
+
+| Champ | Type |
+|---|---|
+| id | INT PK AUTO_INCREMENT |
+| name | VARCHAR(100) |
+| email | VARCHAR(150) UNIQUE |
+| password | VARCHAR(255) |
+| role | ENUM('admin','student') |
+| created_at | DATETIME |
+
+---
+
+## Table `elections`
+
+| Champ | Type |
+|---|---|
+| id | INT PK |
+| title | VARCHAR(150) |
+| description | TEXT |
+| status | ENUM('open','closed','archived') |
+| created_at | DATETIME |
+| closed_at | DATETIME NULL |
+
+---
+
+## Table `candidates`
+
+| Champ | Type |
+|---|---|
+| id | INT PK |
+| name | VARCHAR(100) |
+| program | TEXT |
+| election_id | FK → elections(id) |
+
+---
+
+## Table `votes`
+
+| Champ | Type |
+|---|---|
+| id | INT PK |
+| user_id | FK → users(id) |
+| candidate_id | FK → candidates(id) |
+| election_id | FK → elections(id) |
+| voted_at | DATETIME |
+
+### Contrainte importante
+
+```sql
+UNIQUE(user_id, election_id)
+```
+
+Cette contrainte empêche un étudiant de voter plusieurs fois dans le même scrutin.
+
+---
+
+# 🔐 Sécurité
+
+Le projet implémente plusieurs mécanismes de sécurité :
+
+- Hashage des mots de passe avec :
+  ```php
+  password_hash()
+  ```
+- Utilisation de :
+  ```php
+  PASSWORD_BCRYPT
+  ```
+- Requêtes SQL sécurisées avec PDO + paramètres préparés
+- Protection CSRF sur les formulaires sensibles
+- Régénération des sessions avec :
+  ```php
+  session_regenerate_id()
+  ```
+- Protection contre le double vote
+- Échappement HTML via la fonction `e()`
+- Validation des données côté client et côté serveur
+
+---
+
+# ✨ Fonctionnalités
+
+## 👨‍🎓 Espace Étudiant
+
+- Consulter les élections ouvertes
+- Voter une seule fois par scrutin
+- Voir les résultats après participation
+- Modifier son mot de passe
+- Consulter son tableau de bord
+
+---
+
+## 👨‍💼 Espace Administrateur
+
+- Créer des scrutins
+- Modifier les élections
+- Clôturer ou archiver un scrutin
+- Supprimer des élections
+- Gérer les candidats
+- Voir les résultats en temps réel
+- Consulter les statistiques globales
+- Accéder aux archives
+
+---
+
+# 📊 Résultats en Temps Réel
+
+Le système intègre :
+
+- AJAX Polling toutes les 5 secondes
+- Graphiques dynamiques avec Chart.js
+- Actualisation automatique des statistiques
+
+---
+
+# 🛠️ Technologies Utilisées
+
+## Frontend
+
+- HTML5
+- CSS3
+- Bootstrap 5.3
+- JavaScript ES6
+- Chart.js 4
+
+## Backend
+
+- PHP 7.4+
+- PDO MySQL
+
+## Base de données
+
+- MySQL
+- MariaDB
+- UTF8MB4
+
+---
+
+# 📱 Compatibilité & Responsive Design
+
+Le projet a été testé sur :
+
+- Google Chrome 120+
+- Mozilla Firefox 121+
+- Microsoft Edge 120+
+
+Le site est entièrement responsive :
+
+- 💻 Desktop
+- 📱 Mobile
+- 📲 Tablette
+
+---
+
+# 👨‍💻 Auteurs
+
+- **Oualid Mokrane**
+- **Hajar Errahmouni**
+
+Filière : **Management et Gouvernance des Systèmes d’Information (MGSI)**  
+ENSIASD Taroudant
+
+---
