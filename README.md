@@ -161,8 +161,8 @@ student123
 
 ### Comptes disponibles
 
-- oualid.mokrane@ensiasd.ma
-- hajar.errahmouni@ensiasd.ma
+- oualid@ensiasd.ma
+- hajar@ensiasd.ma
 
 Les nouveaux utilisateurs peuvent également créer un compte via la page :
 
